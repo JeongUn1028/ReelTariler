@@ -10,7 +10,6 @@ const Div = styled.div`
   padding: 0px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
 `;
 
 const Header = () => {

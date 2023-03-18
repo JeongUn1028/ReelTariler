@@ -11,8 +11,8 @@ const Div = styled.div`
   display: flex;
   flex-flow: wrap;
   flex-direction: row;
-  justify-content: space-evenly;
-  text-align: left;
+  justify-content: space-around;
+  align-items: center;
 `;
 
 const Img = styled.img`
@@ -46,8 +46,10 @@ const Thumbnail = () => {
   }, []);
 
   return (
-    <Div onClick={() => setModal(true)}>
-      {modal === true ? (
+    <Div>
+      {playlist.items?.map((e) => (
+        <div key={e.etag} onClick={() => setModal(true)}>
+          {modal && (
         <div
           ref={outside}
           onClick={(e) => {
@@ -56,9 +58,7 @@ const Thumbnail = () => {
         >
           <ClickMovie />
         </div>
-      ) : null}
-      {playlist.items?.map((e) => (
-        <div key={e.etag}>
+      )}
           <Img src={e.snippet.thumbnails.medium.url} alt="thumbnail"></Img>
           <Title>{e.snippet.title}</Title>
         </div>
