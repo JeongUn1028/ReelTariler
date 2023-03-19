@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { PLAYLISTS, YOUTUBEURL } from '../../API/apis';
+import { apiKey, PLAYLISTS, YOUTUBEURL } from '../../API/apis';
 import { useEffect } from 'react';
 
 const Playlist = () => {
@@ -10,7 +10,7 @@ const Playlist = () => {
     const getPlaylist = async () => {
         const json = await(
             await fetch(
-                `${YOUTUBEURL}${PLAYLISTS}&part=snippet`
+                `${YOUTUBEURL}${PLAYLISTS}?key=${apiKey}&part=snippet`
             )
         ).json();
         setPlist(json.items);

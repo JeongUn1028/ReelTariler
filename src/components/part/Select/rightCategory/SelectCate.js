@@ -14,29 +14,28 @@ const Div = styled.div`
 
 const SelectCate = () => {
   const genre = [
-    "액션",
-    "모험",
-    "예술",
-    "코미디",
-    "드라마",
-    "다큐멘터리",
-    "교육",
-    "판타지",
-    "누아르",
-    "공포",
-    "미스터리",
-    "SF",
-    "로맨스",
+    "액션 |",
+    "모험 |",
+    "예술 |",
+    "코미디 |",
+    "드라마 |",
+    "다큐멘터리 |",
+    "교육 |",
+    "판타지 |",
+    "누아르 |",
+    "공포 |",
+    "미스터리 |",
+    "SF |",
+    "로맨스 |",
     "과학",
   ];
   const dialog = [
-    "전체관람가",
-    "12세 관람가",
-    "15세 관람가",
+    "전체관람가 |",
+    "12세 관람가 |",
+    "15세 관람가 |",
     "청소년 관람불가",
   ];
-  const ProCompany = ["CJENM", "Mavel", "centryFox", "WarnerB", "ShowBox"];
-
+  
   return (
     <Div>
       <div>
@@ -44,12 +43,12 @@ const SelectCate = () => {
       </div>
       <div>
         {genre.map((e, i) => (
-          <span key={i}>{e} | </span>
+          <span key={i}>{e} </span>
         ))}
       </div>
       <div>
         {dialog.map((e, i) => (
-          <span key={i}>{e} | </span>
+          <span key={i}>{e} </span>
         ))}
       </div>
       <div>

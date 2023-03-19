@@ -1,12 +1,12 @@
 import YouTube from "react-youtube";
-
+//"qT_fjEgPsaA"
 const PlayMovie = () => {
   return (
     <div>
       <YouTube
         videoId="qT_fjEgPsaA"
         opts={{
-          width: "1000px",
+          width: "100%",
           height: "460px",
           playerVars: {
             autoplay: 0, //자동재생 O

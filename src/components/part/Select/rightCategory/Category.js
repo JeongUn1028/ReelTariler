@@ -5,11 +5,10 @@ const Div = styled.div`
     display: flex;
     flex-direction: column;
     text-align: center;
-    justify-content: space-between;
+    justify-content: space-around;
     font-size: 20px;
     width: 20%;
     color:white;
-    padding-top:20px;
 `
 
 const Category = () => {

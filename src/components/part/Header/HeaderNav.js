@@ -12,6 +12,9 @@ const Div = styled.div`
 const Title = styled.div`
   color: Red;
   font-size: 40px;
+  :hover {
+    cursor: pointer;
+  }
 `;
 const Icons = styled.div`
   color: white;
@@ -29,5 +32,4 @@ const HeaderNav = () => {
     </Div>
   );
 };
-
 export default HeaderNav;

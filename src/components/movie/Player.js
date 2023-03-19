@@ -5,13 +5,13 @@ import { PlaylistItems } from "../../API/PlaylistItems";
 import ids from "../../channelId/ids";
 import Playlist from './Playlist';
 
-const Player = ({width, height}) => {
+const Player = ({viedoiId}) => {
   return (
     <div>
       <ReactPlayer
-        url="https://www.youtube.com/watch?v=qT_fjEgPsaA"
-        width={width}
-        height={height}
+        url={`https://www.youtube.com/watch?v=${viedoiId}`}
+        width="100%"
+        height="460px"
         muted={false}
         playing={false}
         loop={false}
