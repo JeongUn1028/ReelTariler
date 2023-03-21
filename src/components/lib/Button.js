@@ -1,14 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-const Container = styled.div`
-`
-
 const Exp = styled.p`
-    border-radius: 10px;
-    font-size: 5px;
-    width: 190px;
-`
+  border-radius: 10px;
+  font-size: 5px;
+  width: 190px;
+`;
 
 const Btn = styled.button`
   width: 100%;
@@ -27,9 +24,9 @@ const Btn = styled.button`
     background-color: white;
     color: black;
     ${Exp} {
-        color: red;
-        background-color: white;
-        text-align: center;
+      color: red;
+      background-color: white;
+      text-align: center;
     }
     span {
       width: 70%;
@@ -40,27 +37,23 @@ const Btn = styled.button`
     text-align: center;
     color: black;
     :hover {
-        color: red;
+      color: red;
     }
   }
 `;
 
-
-
 const Button = ({ name, index }) => {
   const explain = [
-     "* 3일 내에 올라온 예고편만 보여줍니다.",
-     "* 개봉한지 1주일 안의 영화만 보여줍니다.",
-     "* 상영까지 1주일 남은 예고편들을 보여줍니다.",
-     "* Netflix, Tving 등의 ott 들을 보여줍니다.",
-];
+    "* 3일 내에 올라온 예고편만 보여줍니다.",
+    "* 개봉한지 1주일 안의 영화만 보여줍니다.",
+    "* 상영까지 1주일 남은 예고편들을 보여줍니다.",
+    "* Netflix, Tving 등의 ott 들을 보여줍니다.",
+  ];
   return (
-    <Container>
-      <Btn>
-        <span>{name}</span>
-        <Exp>{explain[index]}</Exp>
-      </Btn>
-    </Container>
+    <Btn>
+      <span>{name}</span>
+      <Exp>{explain[index]}</Exp>
+    </Btn>
   );
 };
 

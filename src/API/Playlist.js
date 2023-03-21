@@ -1,20 +1,8 @@
-import { apiKey, PLAYLISTS, YOUTUBEURL } from "./apis";
-import { useState } from "react";
+// import { apiKey, PLAYLISTS, YOUTUBEURL } from './apis';
+// import ids from '../channelId/ids';
 
-export const Playlists = async ({channelId}) => {
-  const [playlists, setPlaylists] = useState([]);
-
-  const json = await (
-    await fetch(
-      `${YOUTUBEURL}${PLAYLISTS}?key=${apiKey}&channelId=${channelId}&maxResults=50&part=snippet`
-    )
-  ).json();
-  setPlaylists(json);
-  const id = playlists.items?.id;
-  const title = playlists.items?.snippet.title;
-  console.log("Playlist");
-  console.log(id, title);
-  
-  return [id, title];
-};
-
+// export const playlist = async (chanId) => {
+//   return await fetch(`
+//         ${YOUTUBEURL}${PLAYLISTS}?key=${apiKey}&channelId=${chanId}&maxResult=10&part=id,snippet
+//     `).then((res) => res.json());
+// };

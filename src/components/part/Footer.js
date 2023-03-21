@@ -16,7 +16,7 @@ const Content = styled.div`
 const Footer = () => {
   return (
     <Div>
-      <Content>Created By: 이정운</Content>
+      <Content>Created By: 000</Content>
       <Content>|</Content>
       <Content>제휴제안</Content>
       <Content>|</Content>
