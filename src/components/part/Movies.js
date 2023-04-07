@@ -1,17 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
-import Thumbnail from '../movie/Thumbnail'
+import Poster from '../movie/Poster';
 
 const Div = styled.div`
-    width: 100%;
-`
+  width: 100%;
+`;
 
 const Movies = () => {
-    return (
-        <Div>
-            <Thumbnail />
-        </Div>
-    );
+  return (
+    <Div>
+      <Poster />
+    </Div>
+  );
 };
 
 export default Movies;

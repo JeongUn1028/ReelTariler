@@ -6,13 +6,10 @@ import Select from "./components/part/Select";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
-  margin: 0px;
-  padding: 0px;
 `;
+
 const App = () => {
   return (
     <Wrapper>

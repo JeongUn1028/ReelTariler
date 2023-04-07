@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const Div = styled.div`
   color: white;
@@ -9,14 +9,14 @@ const Div = styled.div`
 `;
 
 const Content = styled.div`
-    margin-left:30px;
-    margin-right: 30px;
+  margin-left: 30px;
+  margin-right: 30px;
 `;
 
 const Footer = () => {
   return (
     <Div>
-      <Content>Created By: 000</Content>
+      <Content>Created By: 이정운</Content>
       <Content>|</Content>
       <Content>제휴제안</Content>
       <Content>|</Content>

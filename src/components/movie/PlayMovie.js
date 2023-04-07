@@ -1,10 +1,10 @@
 import YouTube from "react-youtube";
 //"qT_fjEgPsaA"
-const PlayMovie = () => {
+const PlayMovie = (props) => {
   return (
     <div>
       <YouTube
-        videoId="qT_fjEgPsaA"
+        videoId={props.videoId}
         opts={{
           width: "100%",
           height: "460px",

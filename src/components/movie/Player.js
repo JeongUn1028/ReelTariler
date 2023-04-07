@@ -1,7 +1,5 @@
 import React from "react";
 import ReactPlayer from "react-player";
-import { YOUTUBEURL } from "../../API/apis";
-import { PlaylistItems } from "../../API/PlaylistItems";
 import ids from "../../channelId/ids";
 import Playlist from './Playlist';
 
