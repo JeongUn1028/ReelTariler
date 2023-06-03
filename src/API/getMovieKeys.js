@@ -3,6 +3,6 @@ const TMDBURL = 'https://api.themoviedb.org/3/movie';
 
 export async function getMovieKeys(movieId) {
   return await fetch(`
-        ${TMDBURL}/${movieId}/videos?api_key=${apiKey}&language=en
+  ${TMDBURL}/${movieId}/videos?api_key=${apiKey}
     `).then((res) => res.json());
 }

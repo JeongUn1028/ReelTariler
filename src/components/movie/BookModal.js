@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import Modal from 'react-modal';
+import MovieIdsContext from '../../contexts/bookMarkIds';
 import { FaStar, FaRegStar } from 'react-icons/fa';
-import PlayMovie from './PlayMovie';
+import MovieModal from './MovieModal';
 
 const modalStyle = {
   overlay: {
@@ -31,55 +32,97 @@ const modalStyle = {
     WebkitOverflowScrolling: 'touch',
     zIndex: 10,
     width: '80%',
-    marginLeft: '85px',
+    marginLeft: '150px',
   },
 };
-const ModalHeader = styled.div`
+
+const NoBookMark = styled.h1`
+  text-align: center;
+  color: white;
+`;
+
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+const HeaderWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Title = styled.div`
+  font-size: 30px;
+  font-weight: bold;
+`;
+
+const BodyWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+`;
+
+const BodyMain = styled.div`
+  display: flex;
+  border: 1px dotted white;
+  justify-content: space-around;
+  align-items: center;
+  margin: 20px;
   width: 100%;
 `;
-const Btn = styled.div`
-  text-align: center;
-  font-size: 30px;
+
+const Img = styled.img`
+  width: 150px;
+  height: 195px;
+  margin: 10px;
+`;
+
+const Descript = styled.div`
+  width: 500px;
+  height: 200px;
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-overflow: ellipsis;
+`;
+
+const OverView = styled.div`
+  height: 100px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const BodyDeleteBtn = styled.button`
+  color: white;
+  margin-left: 20px;
+  font-size: 40px;
+  border: none;
   :hover {
     cursor: pointer;
   }
 `;
-const Plist = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-`;
-const PlistItems = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin: 10px 0px;
-  justify-content: left;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-`;
-const PlistItemsInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  text-align: center;
-  width: 100%;
-`;
-const PlistItemsTitle = styled.div`
-  width: 100%;
-  color: white;
-  text-align: center;
-  padding-right: 40px;
-  word-wrap: normal;
-`;
-const Img = styled.img`
-  width: 240px;
-  height: 160px;
-  padding-right: 45px;
-`;
 
 const BookModal = (props) => {
+  const { movieIds, deleteMovieId } = useContext(MovieIdsContext);
+  const [modal, setModal] = useState(false);
+
+  //modal close
+  const close = () => {
+    setModal(false);
+  };
+
+  const deleteBookMark = (movieId) => {
+    deleteMovieId(movieId);
+    localStorage.removeItem(movieId);
+  };
+
   return (
     <Modal
       isOpen={props.open}
@@ -89,19 +132,47 @@ const BookModal = (props) => {
       ariaHideApp={false}
       style={modalStyle}
     >
-      <ModalHeader>
-        <Btn>{window.localStorage.getItem(props.videoId) === null ? <FaRegStar /> : <FaStar />}</Btn>
-        <PlayMovie videoId={props.videoId} />
-      </ModalHeader>
-      <Plist>
-        <PlistItems>
-          <Img src={`https://image.tmdb.org/t/p/w200/${props.image}`} alt="thumbnail"></Img>
-          <PlistItemsInfo>
-            <PlistItemsTitle>{props.title}</PlistItemsTitle>
-            <div>{props.title}</div>
-          </PlistItemsInfo>
-        </PlistItems>
-      </Plist>
+      {movieIds.length === 0 && <NoBookMark>즐겨찾기 한 영상이 없습니다.</NoBookMark>}
+      {movieIds.length !== 0 && (
+        <Wrapper>
+          <HeaderWrapper>
+            <Title>즐겨찾기 목록</Title>
+          </HeaderWrapper>
+          <BodyWrapper>
+            {movieIds.map((e) => {
+              const movieData = JSON.parse(localStorage.getItem(e));
+              return (
+                <>
+                  <BodyMain onClick={() => setModal(true)} key={e.id}>
+                    <Img src={`https://image.tmdb.org/t/p/w200/${movieData.image}`}></Img>
+                    <Descript>
+                      <div>제목 : {movieData.title}</div>
+                      <br />
+                      <div>개봉일 : {movieData.realese}</div>
+                      <br />
+                      <OverView>{movieData.overview}</OverView>
+                    </Descript>
+                    <BodyDeleteBtn onClick={() => deleteBookMark(movieData.videoId)}>
+                      {movieIds.includes(movieData.videoId) ? <FaStar /> : <FaRegStar />}
+                    </BodyDeleteBtn>
+                  </BodyMain>
+                  <MovieModal
+                    open={modal}
+                    close={close}
+                    title={movieData.title}
+                    image={movieData.image}
+                    videoId={movieData.videoId}
+                    overview={movieData.overview}
+                    realese={movieData.realese}
+                    genre={movieData.genre}
+                    voteRate={movieData.voteRate}
+                  />
+                </>
+              );
+            })}
+          </BodyWrapper>
+        </Wrapper>
+      )}
     </Modal>
   );
 };
