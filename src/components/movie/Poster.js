@@ -1,10 +1,13 @@
 import React, { useCallback, useEffect, useState } from 'react';
+
 import dayjs from 'dayjs';
 import styled from 'styled-components';
+
 import { upComings } from '../../API/upComings';
 import { nowPlayings } from '../../API/nowPlayings';
-import { movies } from '../../API/getMovieKeys';
+
 import MovieModal from './MovieModal';
+
 import { otts } from '../../API/otts';
 
 const Wrapper = styled.div`
@@ -42,7 +45,6 @@ const Div = styled.div`
 const Poster = () => {
   //movies
   const [upcoming, setUpcoming] = useState({});
-  const [nowPlay, setNowPlay] = useState({});
   const [nowPlay1, setNowPlay1] = useState({});
   const [nowPlay2, setNowPlay2] = useState({});
   const [nowPlay3, setNowPlay3] = useState({});
@@ -60,6 +62,7 @@ const Poster = () => {
   const [realese, setRealese] = useState('');
   const [gerne, setGerne] = useState([]);
   const [voteRate, setVoteRate] = useState(0);
+
   const later = dayjs().add(14, 'd').format('YYYY-MM-DD');
   const today = dayjs().format('YYYY-MM-DD');
   const ago = dayjs().subtract(14, 'd').format('YYYY-MM-DD');
@@ -107,7 +110,7 @@ const Poster = () => {
     getUpComings();
     getNowPlayings();
     getOtts();
-  }, []);
+  });
   return (
     <Wrapper>
        {upcoming === false ? (

@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from './components/part/Header';
-import Movies from './components/part/Movies';
-import Footer from './components/part/Footer';
-import Select from './components/part/Select';
+import Header from './components/movieComponent/Header';
+import Movies from './components/movieComponent/Movies';
+import Footer from './components/movieComponent/Footer';
+import Select from './components/movieComponent/Select';
 import styled from 'styled-components';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NowPlaying from './pages/NowPlaying';

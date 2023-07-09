@@ -28,7 +28,7 @@ const modalStyle = {
     border: 'none',
     color: 'white',
     borderRadius: '20px',
-    overflowy: 'scroll',
+    overflow: 'scroll',
     WebkitOverflowScrolling: 'touch',
     zIndex: 10,
     width: '80%',
@@ -132,8 +132,7 @@ const BookModal = (props) => {
       ariaHideApp={false}
       style={modalStyle}
     >
-      {movieIds.length === 0 && <NoBookMark>즐겨찾기 한 영상이 없습니다.</NoBookMark>}
-      {movieIds.length !== 0 && (
+      {movieIds.length !== 0 ? (
         <Wrapper>
           <HeaderWrapper>
             <Title>즐겨찾기 목록</Title>
@@ -141,6 +140,7 @@ const BookModal = (props) => {
           <BodyWrapper>
             {movieIds.map((e) => {
               const movieData = JSON.parse(localStorage.getItem(e));
+              const {title, image, videoId, overview, realese, genre, voteRate} = movieData
               return (
                 <>
                   <BodyMain onClick={() => setModal(true)} key={e.id}>
@@ -159,20 +159,20 @@ const BookModal = (props) => {
                   <MovieModal
                     open={modal}
                     close={close}
-                    title={movieData.title}
-                    image={movieData.image}
-                    videoId={movieData.videoId}
-                    overview={movieData.overview}
-                    realese={movieData.realese}
-                    genre={movieData.genre}
-                    voteRate={movieData.voteRate}
+                    title={title}
+                    image={image}
+                    videoId={videoId}
+                    overview={overview}
+                    realese={realese}
+                    genre={genre}
+                    voteRate={voteRate}
                   />
                 </>
               );
             })}
           </BodyWrapper>
         </Wrapper>
-      )}
+      ) : <NoBookMark>즐겨찾기 한 영상이 없습니다.</NoBookMark>}
     </Modal>
   );
 };
